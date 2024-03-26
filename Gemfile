@@ -5,7 +5,7 @@ gem "rails", '~> 7.0.8'
 gem 'pg', '~> 1.5'
 gem "sprockets-rails"
 gem "dartsass-rails", "~> 0.5.0"
-gem "terser", "~> 1.1"
+gem "terser", "~> 1.2"
 
 gem 'dotenv'
 gem 'jquery-rails'
@@ -22,14 +22,14 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-gem 'aws-sdk-sqs', '~> 1.67'
+gem 'aws-sdk-sqs', '~> 1.70'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
-  gem 'factory_bot_rails', '~> 6.1'
+  gem 'factory_bot_rails', '~> 6.4'
   gem 'database_cleaner'
   gem 'sinatra'
 end
