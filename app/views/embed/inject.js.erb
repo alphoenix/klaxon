@@ -58,19 +58,19 @@
   }
 
   var src = editorURL + "?url=" + encodeURIComponent(getCanonicalURL());
-  var iframe = document.createElement('iframe');
-  iframe.setAttribute('src', src);
-  iframe.setAttribute('id', 'klaxon-bookmarklet-iframe');
-  iframe.setAttribute('frameborder', 0);
-  iframe.style.top = '0px';
-  iframe.style.right = '0px';
-  iframe.style.width = '300px';
-  iframe.style.height = (window.innerHeight)+'px';
-  iframe.style.position = 'fixed';
-  iframe.style.zIndex = 2147483647; // just a big number, hopefully big enough
-  document.body.appendChild(iframe);
-  document.body.setAttribute('cursor', 'grab')
-  // var iframe = window.open(src, "Klaxon", "width=200,height=200");
+//var iframe = document.createElement('iframe');
+//iframe.setAttribute('src', src);
+//iframe.setAttribute('id', 'klaxon-bookmarklet-iframe');
+//iframe.setAttribute('frameborder', 0);
+//iframe.style.top = '0px';
+//iframe.style.right = '0px';
+//iframe.style.width = '300px';
+//iframe.style.height = (window.innerHeight)+'px';
+//iframe.style.position = 'fixed';
+//iframe.style.zIndex = 2147483647; // just a big number, hopefully big enough
+//document.body.appendChild(iframe);
+//document.body.setAttribute('cursor', 'grab')
+  var iframe = window.open(src, "Klaxon", "width=200,height=200");
 
   var styles = document.createElement('style');
   styles.setAttribute('id', 'klaxon-css-inject');
@@ -78,7 +78,7 @@
 
   var postMessage = function(data) {
     var json = JSON.stringify(data);
-    iframe.contentWindow.postMessage(json, postMessageDomain);
+    iframe.postMessage(json, postMessageDomain);
   }
 
   var lastElement = function(arr) {
@@ -98,7 +98,7 @@
     console.log(css);
     styles.innerHTML = css;
 
-    var matchText = document.querySelector(selector).innerText;
+    var matchText = window.parent.document.querySelector(selector).innerText;
     postMessage({ event: 'updatePath', value: selector, matchText: matchText })
   }
 
